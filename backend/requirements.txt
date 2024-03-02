@@ -1,0 +1,16 @@
+asgiref==3.7.2
+cffi==1.16.0
+cryptography==41.0.5
+Django==4.2.6
+django-phonenumber-field==7.2.0
+djangorestframework==3.14.0
+phonenumbers==8.13.24
+psycopg2==2.9.9
+pycparser==2.21
+Pyjwt==2.8.0
+sqlparse==0.4.4
+typing_extensions==4.8.0
+uuid==1.30
+postgis==1.0.4
+django-cors-headers==4.3.1
+geopy==2.4.1

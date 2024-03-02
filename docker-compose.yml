@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  django:
+    container_name: django
+    build:
+      context: ./backend
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./backend:/code
+    restart: always
+  
+  db:
+    image: postgis/postgis:13-3.1
+    platform: linux/amd64
+    ports:
+      - "5432:5432"
+    volumes:
+      - $PWD/pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=techtitans
+      - POSTGRES_USER=techtitans
+      - POSTGRES_PASSWORD=techtitans
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      retries: 5
